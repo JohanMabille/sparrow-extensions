@@ -17,12 +17,12 @@
 namespace sparrow_extensions
 {
     constexpr int SPARROW_EXTENSIONS_VERSION_MAJOR = 0;
-    constexpr int SPARROW_EXTENSIONS_VERSION_MINOR = 1;
+    constexpr int SPARROW_EXTENSIONS_VERSION_MINOR = 2;
     constexpr int SPARROW_EXTENSIONS_VERSION_PATCH = 0;
 
-    constexpr int SPARROW_EXTENSIONS_BINARY_CURRENT = 1;
+    constexpr int SPARROW_EXTENSIONS_BINARY_CURRENT = 2;
     constexpr int SPARROW_EXTENSIONS_BINARY_REVISION = 0;
-    constexpr int SPARROW_EXTENSIONS_BINARY_AGE = 1;
+    constexpr int SPARROW_EXTENSIONS_BINARY_AGE = 2;
 
     static_assert(
         SPARROW_EXTENSIONS_BINARY_AGE <= SPARROW_EXTENSIONS_BINARY_CURRENT,
