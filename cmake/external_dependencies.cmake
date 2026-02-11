@@ -84,9 +84,9 @@ find_package_or_fetch(
     PACKAGE_NAME simdjson
     GIT_REPOSITORY https://github.com/simdjson/simdjson.git
     TAG v4.2.4
+    CMAKE_ARGS
+        CMAKE_POSITION_INDEPENDENT_CODE=ON
 )
-
-set(SPARROW_EXTENSIONS_INTERFACE_DEPENDENCIES ${SPARROW_EXTENSIONS_INTERFACE_DEPENDENCIES} simdjson::simdjson)
 
 if(SPARROW_EXTENSIONS_BUILD_TESTS)
     find_package_or_fetch(

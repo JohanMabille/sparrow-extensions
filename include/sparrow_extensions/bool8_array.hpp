@@ -17,6 +17,8 @@
 #include "sparrow/primitive_array.hpp"
 #include "sparrow/utils/extension.hpp"
 
+#include "sparrow_extensions/config/config.hpp"
+
 namespace sparrow_extensions
 {
     /**
@@ -36,6 +38,16 @@ namespace sparrow_extensions
      *
      */
     using bool8_array = sparrow::primitive_array<int8_t, sparrow::simple_extension<"arrow.bool8">, bool>;
+}
+
+namespace sparrow::copy_tracker
+{
+    template <typename T>
+        requires (mpl::is_type_instance_of_v<T, primitive_array_impl> && std::same_as<T, sparrow_extensions::bool8_array>)
+    inline std::string key()
+    {
+        return "bool8_array";
+    }
 }
 
 #if defined(__cpp_lib_format)

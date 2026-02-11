@@ -18,6 +18,8 @@
 #include "sparrow/variable_size_binary_array.hpp"
 #include "sparrow/variable_size_binary_view_array.hpp"
 
+#include "sparrow_extensions/config/config.hpp"
+
 namespace sparrow_extensions
 {
 
@@ -91,6 +93,30 @@ namespace sparrow_extensions
         sparrow::arrow_traits<std::string>::value_type,
         sparrow::arrow_traits<std::string>::const_reference,
         json_extension>;
+}
+
+namespace sparrow::copy_tracker
+{
+    template <typename T>
+        requires (mpl::is_type_instance_of_v<T, variable_size_binary_array_impl> && std::same_as<T, sparrow_extensions::json_array>)
+    inline std::string key()
+    {
+        return "json_array";
+    }
+
+    template <typename T>
+        requires (mpl::is_type_instance_of_v<T, variable_size_binary_array_impl> && std::same_as<T, sparrow_extensions::big_json_array>)
+    inline std::string key()
+    {
+        return "big_json_array";
+    }
+
+    template <typename T>
+        requires (mpl::is_type_instance_of_v<T, variable_size_binary_view_array_impl> && std::same_as<T, sparrow_extensions::json_view_array>)
+    inline std::string key()
+    {
+        return "json_view_array";
+    }
 }
 
 namespace sparrow::detail
